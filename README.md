@@ -1,4 +1,4 @@
-# Text-Collab: Real-time Terminal Collaborative Text Editor
+# Text-Collab: Real-time Terminal Based Collaborative Text Editor
 
 A terminal-based collaborative text editor built in Go that allows multiple users to edit the same document simultaneously in real-time.
 
