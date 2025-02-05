@@ -9,6 +9,9 @@ A terminal-based collaborative text editor built in Go that allows multiple user
 | Emran Yonas          | UGR/1649/14      |
 | Fuad Mohammed Obsu   | UGR/6052/14      |
 | Zemenu Mekuriya      | UGR/5017/14      |
+| Salman Ali           | UGR/7808/14      |
+| Feysel Hussien       | UGR/5898/14      |
+
 
 
 ## Features
