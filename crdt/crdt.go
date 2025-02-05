@@ -8,6 +8,6 @@ type CRDT interface {
 }
 
 func IsCRDT(c CRDT) {
-	// temporary code to check if the CRDT works.
+	// Test function to verify CRDT functionality
 	fmt.Println(c.Insert(1, "a"))
 }

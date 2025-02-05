@@ -17,7 +17,7 @@ import (
 	"github.com/sirupsen/logrus/hooks/writer"
 )
 
-// Flags represents the command-line flags that are passed to pairpad's client.
+// Flags contains the command-line configuration options for the pairpad client
 type Flags struct {
 	Server string
 	Secure bool
@@ -27,7 +27,7 @@ type Flags struct {
 	Scroll bool
 }
 
-// parseFlags parses command-line flags.
+// parseFlags processes and returns the command-line arguments
 func parseFlags() Flags {
 	serverAddr := flag.String("server", "localhost:8080", "The network address of the server")
 	useSecureConn := flag.Bool("secure", false, "Enable a secure WebSocket connection (wss://)")
@@ -48,6 +48,7 @@ func parseFlags() Flags {
 	}
 }
 
+// createConn establishes a WebSocket connection to the server using the provided flags
 func createConn(flags Flags) (*websocket.Conn, *http.Response, error) {
 	var u url.URL
 	if flags.Secure {
@@ -63,7 +64,7 @@ func createConn(flags Flags) (*websocket.Conn, *http.Response, error) {
 	return dialer.Dial(u.String(), nil)
 }
 
-// ensureDirExists ensures that a directory exists, and if it isn't present, it tries to create a new one.
+// ensureDirExists checks if a directory exists and creates it if it doesn't
 func ensureDirExists(path string) (bool, error) {
 	// Check if the directory exists
 	if _, err := os.Stat(path); err == nil {
@@ -79,7 +80,7 @@ func ensureDirExists(path string) (bool, error) {
 	return true, nil
 }
 
-// setupLogger initializes the client's logger (logrus).
+// setupLogger configures logrus with separate files for different log levels
 func setupLogger(logger *logrus.Logger) (*os.File, *os.File, error) {
 	// define log file paths, based on the home directory.
 	logPath := "pairpad.log"
@@ -142,8 +143,7 @@ func setupLogger(logger *logrus.Logger) (*os.File, *os.File, error) {
 	return logFile, debugLogFile, nil
 }
 
-// closeLogFiles closes the log files created by the client.
-// closeLogFiles is meant to be used for defer calls.
+// closeLogFiles safely closes both log files used by the client
 func closeLogFiles(logFile, debugLogFile *os.File) {
 	if err := logFile.Close(); err != nil {
 		fmt.Printf("Failed to close log file: %s", err)
@@ -156,7 +156,7 @@ func closeLogFiles(logFile, debugLogFile *os.File) {
 	}
 }
 
-// printDoc "prints" the document state to the logs.
+// printDoc logs the current state of the document for debugging purposes
 func printDoc(doc crdt.Document) {
 	if flags.Debug {
 		logger.Infof("---DOCUMENT STATE---")

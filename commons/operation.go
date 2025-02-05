@@ -1,13 +1,13 @@
 package commons
 
-// Operation represents a CRDT operation.
+// Operation defines a CRDT operation that can be applied to modify the document
 type Operation struct {
-	// Type represents the operation type, for example, insert, delete.
+	// Type indicates whether this is an insert or delete operation
 	Type string `json:"type"`
 
-	// Position represents the position at which the operation has been made.
+	// Position specifies where in the document this operation occurs
 	Position int `json:"position"`
 
-	// Value represents the content of the operation. Mostly a character.
+	// Value contains the actual character or content being operated on
 	Value string `json:"value"`
 }

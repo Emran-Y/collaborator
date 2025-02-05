@@ -6,35 +6,37 @@ import (
 	"github.com/google/uuid"
 )
 
-// Message represents the message sent over the wire.
+// Message defines the structure for messages exchanged between clients and server
 type Message struct {
 	Username string `json:"username"`
 
-	// Text represents the body of the message. This is currently used for joining messages, the siteID, and the list of active users.
+	// Text contains the message body used for join notifications, siteID assignment,
+	// and active user lists
 	Text string `json:"text"`
 
-	// Type represents the message type.
+	// Type indicates what kind of message this is (see MessageType constants)
 	Type MessageType `json:"type"`
 
-	// ID represents the client's UUID.
+	// ID uniquely identifies the client
 	ID uuid.UUID `json:"ID"`
 
-	// Operation represents the CRDT operation.
+	// Operation contains any CRDT operations to be applied
 	Operation Operation `json:"operation"`
 
-	// Document represents the client's document. This is not used frequently, and should be only used when necessary, due to the large size of documents.
+	// Document holds the full CRDT document state
+	// Note: Only sent when absolutely necessary due to size
 	Document crdt.Document `json:"document"`
 }
 
-// MessageType represents the type of the message.
+// MessageType categorizes the different kinds of messages that can be sent
 type MessageType string
 
-// Currently, pairpad supports 5 message types:
-// - docSync (for syncing documents)
-// - docReq (for requesting documents)
-// - SiteID (for generating site IDs)
-// - join (for joining messages)
-// - users (for the list of active users)
+// Supported message types:
+// DocSyncMessage - Synchronize document state between clients
+// DocReqMessage - Request latest document state
+// SiteIDMessage - Assign unique site ID to client
+// JoinMessage - Notify when clients join
+// UsersMessage - Update list of active users
 
 const (
 	DocSyncMessage MessageType = "docSync"
