@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"editor/commons"
-	"editor/crdt"
+	"terminal_collab/commons"
+	"terminal_collab/crdt"
 
 	"github.com/gorilla/websocket"
 	"github.com/nsf/termbox-go"

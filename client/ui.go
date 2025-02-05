@@ -1,8 +1,8 @@
 package main
 
 import (
-	"editor/client/editor"
-	"editor/crdt"
+	"terminal_collab/client/editor"
+	"terminal_collab/crdt"
 
 	"github.com/gorilla/websocket"
 	"github.com/nsf/termbox-go"
@@ -11,7 +11,6 @@ import (
 type UIConfig struct {
 	EditorConfig editor.EditorConfig
 }
-
 
 func initUI(conn *websocket.Conn, conf UIConfig) error {
 	err := termbox.Init()

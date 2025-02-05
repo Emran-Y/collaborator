@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"terminal_collab/client/editor"
 
-	"editor/client/editor"
-	"editor/commons"
-	"editor/crdt"
+	"terminal_collab/commons"
+	"terminal_collab/crdt"
 
 	"github.com/Pallinder/go-randomdata"
 	"github.com/sirupsen/logrus"

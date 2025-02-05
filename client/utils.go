@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"editor/crdt"
+	"terminal_collab/crdt"
 
 	"github.com/gorilla/websocket"
 	"github.com/sirupsen/logrus"
