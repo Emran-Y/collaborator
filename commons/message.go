@@ -1,7 +1,7 @@
 package commons
 
 import (
-	"editor/crdt"
+	"terminal_collab/crdt"
 
 	"github.com/google/uuid"
 )
